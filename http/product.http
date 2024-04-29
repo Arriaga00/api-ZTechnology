@@ -1,0 +1,26 @@
+### consultar producto
+GET http://localhost:5000/api/product/consultar-productos
+
+###guardar producto
+POST http://localhost:5000/api/product/guardar-producto
+Content-Type: application/json
+
+{
+    "name": "iPhone 15 pro max",
+    "description": "Smartphone de Apple con 256GB de almacenamiento",
+    "price": "1300"
+}
+
+### actualizar producto
+PUT http://localhost:5000/api/product/actualizar-producto
+Content-Type: application/json
+
+{
+    "id_product" : 11,
+    "name": "iPhone 15 pro max",
+    "description": "Smartphone de Apple con 256GB de almacenamiento",
+    "price": "1200"
+}
+
+### Eliminar product0
+DELETE http://localhost:5000/api/product/eleminar-producto/11

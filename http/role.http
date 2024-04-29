@@ -1,0 +1,5 @@
+### consult roles
+GET http://localhost:5000/api/role/cosnultar-roles
+
+### consultar por id
+GET http://localhost:5000/api/role/cosnultar-role/1
