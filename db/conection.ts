@@ -6,7 +6,8 @@ const env = process.env
 
 const db = new Sequelize(env.DB_NAME || 'ventapps', env.DB_USER || 'root', env.DB_PASSWORD||'', {
     host: env.DB_HOST||'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    port: 44275
   })
 
   export default db
