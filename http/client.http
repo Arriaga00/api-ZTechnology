@@ -1,2 +1,2 @@
 ###
-GET http://localhost:5000/api/client/clientAll
+GET ztechnology.up.railway.app/api/client/clientAll
