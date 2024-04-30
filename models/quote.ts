@@ -22,6 +22,11 @@ const quote = db.define('Quote', {
     total_price : {
         type : DataTypes.DECIMAL
     }
-})
+},
+{
+    tableName: 'quotes',
+    timestamps: false
+}
+)
 
 export default quote

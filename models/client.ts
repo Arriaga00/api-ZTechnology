@@ -19,6 +19,10 @@ const client = db.define('Client', {
     phone : {
         type : DataTypes.NUMBER
     }
+},
+{
+    tableName: 'clients',
+    timestamps: false
 })
 
 export default client

@@ -28,6 +28,10 @@ const order = db.define('Order', {
     status : {
         type : DataTypes.ENUM('pending', 'completed', 'denied')
     }
+},
+{
+    tableName: 'orders',
+    timestamps: false
 })
 
 export default order

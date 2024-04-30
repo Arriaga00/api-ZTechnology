@@ -35,6 +35,11 @@ const user = db.define('User', {
     confirmPassword : {
         type : DataTypes.STRING
     }
-})
+},
+{
+    tableName: 'users',
+    timestamps: false
+}
+)
 
 export default user

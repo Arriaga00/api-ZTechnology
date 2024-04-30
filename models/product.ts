@@ -19,6 +19,10 @@ const product = db.define('Product', {
     image :{
         type : DataTypes.STRING,
     }
+},
+{
+    tableName: 'products',
+    timestamps: false
 })
 
 export default product
