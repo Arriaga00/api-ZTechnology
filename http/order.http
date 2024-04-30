@@ -1,2 +1,4 @@
 ###
-GET ztechnology.up.railway.app/api/order/ordersAll
+GET http://localhost:5000/api/order/ordersAll
+
+###

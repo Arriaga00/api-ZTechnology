@@ -16,7 +16,7 @@ const client = db.define('Client', {
     },
     id_user : {
         type : DataTypes.BIGINT,
-        references: {         // Esta es la clave foránea
+        references: {  
             model: User,
             key: 'id'
         }

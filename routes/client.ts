@@ -1,8 +1,9 @@
 import { Router } from "express";
-import {getClients} from '../controllers/client'
+import {getClients , creatClient} from '../controllers/client'
 
 const router = Router()
 
 router.get('/clientAll', getClients)
+router.post('/createClient',creatClient)
 
 export default router

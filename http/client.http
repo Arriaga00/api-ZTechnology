@@ -1,2 +1,14 @@
 ###
-GET ztechnology.up.railway.app/api/client/clientAll
+GET http://localhost:5000/api/client/clientAll
+
+###
+POST http://localhost:5000/api/client/createClient
+Content-Type: application/json
+
+{
+    "name": "Luisa Fernanda Alcaraz",
+    "email": "luisa@gmail.com",
+    "phone" : "73636398",
+    "id_user" : 9
+    
+}
