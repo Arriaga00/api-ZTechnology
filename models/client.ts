@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from '../db/conection'
+import User from './user';  // Importa el modelo User
 
 const client = db.define('Client', {
     id_client : {
@@ -14,7 +15,11 @@ const client = db.define('Client', {
         type: DataTypes.STRING
     },
     id_user : {
-        type : DataTypes.BIGINT
+        type : DataTypes.BIGINT,
+        references: {         // Esta es la clave foránea
+            model: User,
+            key: 'id'
+        }
     },
     phone : {
         type : DataTypes.NUMBER
@@ -23,6 +28,8 @@ const client = db.define('Client', {
 {
     tableName: 'clients',
     timestamps: false
-})
+});
 
-export default client
+client.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
+
+export default client;
