@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Order from '../models/order'
+import Order_Detail from '../models/order_Detail'
 
 
 export const getOrders = async ( req: Request , res : Response) => {
@@ -12,24 +13,41 @@ export const getOrders = async ( req: Request , res : Response) => {
 }
 
 export const saveOrder = async(req: Request, res: Response) => {
-
-    let { id_client, id_product , quantity , order_date , total_price , id_user , status } = req.body
-
-    const orders = await Order.create({ id_client, id_product , quantity , order_date , total_price , id_user , status })
-
-    const id = orders.dataValues.id_order
-
+    let { id_client, products, total_price, id_user, } = req.body;
+    const Dates = new Date()
+    const day = String(Dates.getDate()).padStart(2, '0'); // Asegura que el día siempre tenga dos dígitos
+    const month = String(Dates.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript empiezan desde 0
+    const year = Dates.getFullYear()
+    const toDay = `${year}-${month}-${day}`; // Formato 'YYYY-MM-DD'
+  
+    // Crea la orden
+    const order = await Order.create({ id_client, order_date : toDay, total_price, id_user, status : 'pending' });
+  
+    // Obtiene el id de la orden creada
+    const id_order = order.dataValues.id_order;
+  
+    // Crea cada producto de la orden
+    for (let product of products) {
+      await Order_Detail.create({ id_order, id_product: product.id_product, quantity: product.quantity });
+    }
+  
     res.status(200).json({
-        msg : `Se registro una nueva orden con el id: ${id}` 
-    })
-}
+      msg: `Se registró una nueva orden con el id: ${id_order}` 
+    });
+};
+
 
 
 export const updateOrder = async(req: Request, res: Response) => {
 
-    let { id_order, id_client, id_product , quantity , order_date , total_price , id_user , status } = req.body
+    let { id_order, id_client, id_product , quantity  , total_price , id_user , status } = req.body
+    const Dates = new Date()
+    const day = String(Dates.getDate()).padStart(2, '0'); 
+    const month = String(Dates.getMonth() + 1).padStart(2, '0');
+    const year = Dates.getFullYear()
+    const toDay = `${year}-${month}-${day}`; 
 
-    const orders = await Order.update({ id_client, id_product , quantity , order_date , total_price , id_user , status },{
+    const orders = await Order.update({ id_client, id_product , quantity , order_date: toDay , total_price , id_user , status },{
         where : {
             id_order
         }

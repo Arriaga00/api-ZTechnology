@@ -6,6 +6,7 @@ import Login from '../routes/auth'
 import productRoutes from '../routes/product'
 import orderRoutes from '../routes/order'
 import clientRoutes from '../routes/client'
+import orderDetailRoutes from '../routes/order_Detail'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -20,7 +21,8 @@ class Server {
         auth : '/api/auth',
         product : '/api/product',
         order : '/api/order',
-        client : '/api/client'
+        client : '/api/client',
+        order_detail: '/api/order_detail'
     }
 
     constructor(){
@@ -43,6 +45,7 @@ class Server {
         this.app.use(this.apiPaths.auth, Login)
         this.app.use(this.apiPaths.order, orderRoutes)
         this.app.use(this.apiPaths.client, clientRoutes)
+        this.app.use(this.apiPaths.order_detail, orderDetailRoutes)
     }
 
     listen(){
