@@ -3,7 +3,7 @@ import db from '../db/conection'
 
 const order_detail = db.define('Order_Detail',{
     id_order : {
-        type : DataTypes.BIGINT
+        type : DataTypes.BIGINT,
     },
     id_product : {
         type : DataTypes.NUMBER
