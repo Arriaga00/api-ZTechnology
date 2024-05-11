@@ -61,9 +61,9 @@ export const saveUser = async(req: Request, res: Response) => {
     let {document, names , email , password , cellphone , address , age , photo , id_roles ,confirmPassword } = req.body
 
 
-    photo = req.file?.fieldname
+    photo = req.file?.path
     console.log(photo)
-    //encriptando la contrasena
+    // encriptando la contrasena
     const salt = bcrypt.genSaltSync()
     password = bcrypt.hashSync(password, salt)
 
@@ -73,6 +73,10 @@ export const saveUser = async(req: Request, res: Response) => {
 
     res.status(200).json({
         msg : `Se registro un usuario nuevo con el id: ${id}` 
+    })
+
+    res.status(200).json({
+        msg : `Archivo cargado exitosamente: ${photo}` 
     })
 }
 

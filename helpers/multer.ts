@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     filename : (req,file,cb) => {
         console.log(file)
         const randomName = uuidv4()
-        cb(null , `${randomName}, ${file.mimetype.split('/')[1]}`)
+        cb(null , `${randomName}.${file.mimetype.split('/')[1]}`)
     }
 })
 

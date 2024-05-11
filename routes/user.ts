@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { consultUser, consultUserById, consultUserByNames , saveUser, updateUser, deleteUser}  from '../controllers/user'
+import {validateJWT} from '../middleware/validateJWT'
 import upload from '../helpers/multer'
 
 const router = Router()
@@ -12,11 +13,11 @@ router.get('/consultar-usuarios', consultUser)
 router.get('/consultar-usuario/:id', consultUserById)
 router.get('/consultar-usuario-nombre/:names', consultUserByNames)
 
-router.post('/guardar-usuario',upload.single('photo'), saveUser)
+router.post('/guardar-usuario',validateJWT,upload.single('photo'), saveUser)
 
-router.put('/actualizar-usuario', updateUser)
+router.put('/actualizar-usuario',validateJWT ,updateUser)
 
-router.delete('/eliminar-usuario/:id', deleteUser)
+router.delete('/eliminar-usuario/:id', validateJWT,deleteUser)
 
 
 router.get('*', (req, res) => {
