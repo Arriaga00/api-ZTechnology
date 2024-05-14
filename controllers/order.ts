@@ -24,15 +24,15 @@ export const saveOrder = async(req: Request, res: Response) => {
     const order = await Order.create({ id_client, order_date : toDay, total_price, id_user, status : 'pending' });
   
     // Obtiene el id de la orden creada
-    const id_order = order.dataValues.id_order;
+    const id = order.dataValues.id_order;
   
     // Crea cada producto de la orden
     for (let product of products) {
-      await Order_Detail.create({ id_order, id_product: product.id_product, quantity: product.quantity });
+      await Order_Detail.create({ id_order:id, id_product: product.id_product, quantity: product.quantity })
     }
   
     res.status(200).json({
-      msg: `Se registró una nueva orden con el id: ${id_order}` 
+      msg: `Se registró una nueva orden con el id: ${id}` 
     });
 };
 

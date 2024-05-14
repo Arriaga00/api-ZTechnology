@@ -1,9 +1,15 @@
 import { DataTypes } from "sequelize";
 import db from '../db/conection'
+import Order from './order'; // Importa el modelo Order
 
-const order_detail = db.define('Order_Detail',{
+const Order_Detail = db.define('Order_Detail',{
     id_order : {
         type : DataTypes.BIGINT,
+        primaryKey : true,
+        references: {
+            model: Order,
+            key: 'id_order'
+        }
     },
     id_product : {
         type : DataTypes.NUMBER
@@ -17,4 +23,4 @@ const order_detail = db.define('Order_Detail',{
     timestamps: false
 })
 
-export default order_detail
+export default Order_Detail;

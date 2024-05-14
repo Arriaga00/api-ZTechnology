@@ -38,7 +38,8 @@ export const updateProduct = async ( req: Request, res: Response ) => {
     })
 
     res.status(200).json({
-        msg : `el usuario con el id: ${id_product} ha sido actualizado correctamente`
+        msg : `el usuario con el id: ${id_product} ha sido actualizado correctamente`,
+        product
     })
 
 }
