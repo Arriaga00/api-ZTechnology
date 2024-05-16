@@ -15,28 +15,51 @@ export const login = async (req: Request, res: Response) => {
 
     if (!login) return res.status(400).json({ msg: `El usuario no existe` });
 
-    let falledLogin = login?.falledLogin || 0;
-
     const validPassword = bcrypt.compareSync(
       password,
       login?.dataValues.password
     );
+    const currentTime = new Date();
+    const blockedTime = new Date(login.lasFalledLogin);
+    const minuteDifference = differenceInMinutes(currentTime, blockedTime);
+
+    console.log("currentTime  ", currentTime);
+    console.log("blockedTime  ", blockedTime);
+    console.log("hoursDifference ", minuteDifference);
+    console.log("login.lasFalledLogin ", login.lasFalledLogin);
+
+    if (login?.blocked) {
+      if (minuteDifference >= 120) {
+        await User.update(
+          { blocked: false, falledLogin: 0 },
+          { where: { email } }
+        );
+        return false;
+      } else {
+        res.status(404).json({
+          msg: `El usuario esta bloqueado por favor comunicarse con el servicio al cliente `,
+        });
+      }
+      return true;
+    }
 
     if (!validPassword) {
+      let falledLogin = login?.falledLogin || 0;
       falledLogin++;
+
+      const currentDate = new Date().toISOString();
       if (falledLogin >= 3) {
         await User.update(
-          { blocked: true, lastFailedLogin: new Date() },
+          { blocked: true, lasFalledLogin: currentDate },
           { where: { email } }
         );
         res.status(404).json({
-          msg: `El usuario/ contraseña no son correctos. El usuario ha sido bloqueado por demasiados intentos fallidos.`,
+          msg: `El usuario ha sido bloqueado por demasiados intentos fallidos.`,
         });
-
         return;
       } else {
         await User.update(
-          { falledLogin, lastFailedLogin: new Date() },
+          { falledLogin, lasFalledLogin: currentDate },
           { where: { email } }
         );
         res
@@ -45,32 +68,6 @@ export const login = async (req: Request, res: Response) => {
         return;
       }
     }
-
-    const currentTime = new Date();
-    const blockedTime = new Date(login.lasFalledLogin);
-    const hoursDifference = differenceInMinutes(currentTime, blockedTime);
-    if (login?.blocked) {
-      if (hoursDifference <= 1) {
-        res.status(404).json({
-          msg: `El usuario esta bloqueado por favor comunicarse con el servicio al cliente `,
-        });
-        return;
-      } else {
-        await User.update(
-          {
-            blocked: false,
-            falledLogin: 0,
-          },
-          {
-            where: {
-              email,
-            },
-          }
-        );
-      }
-    }
-    console.log("currentTime: ", currentTime);
-    console.log("blockedTime ", new Date(login.lasFalledLogin));
 
     if (!login?.state) {
       res.status(404).json({
