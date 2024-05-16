@@ -1,11 +1,10 @@
 import { Router } from "express";
-import {getOrders , saveOrder , updateOrder} from '../controllers/order'
+import { getOrders, saveOrder, updateOrder } from "../controllers/order";
+import { validateJWT } from "../middleware/validateJWT";
+const router = Router();
 
+router.get("/ordersAll", getOrders);
+router.post("/savOrder", saveOrder);
+router.put("/updateOrder", validateJWT, updateOrder);
 
-const router  = Router()
-
-router.get('/ordersAll',getOrders)
-router.post('/savOrder',saveOrder)
-router.put('/updateOrder',updateOrder)
-
-export default router
+export default router;

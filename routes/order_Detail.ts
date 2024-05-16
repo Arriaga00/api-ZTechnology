@@ -1,7 +1,11 @@
 import { Router } from "express";
-import {consultDetailsProducts} from '../controllers/order_Detail'
-const router = Router()
+import {
+  consultDetailsProducts,
+  ConsulDetailsProductById,
+} from "../controllers/order_Detail";
+const router = Router();
 
-router.get('/consultDetailsProducts',consultDetailsProducts)
+router.get("/consultDetailsProducts", consultDetailsProducts);
+router.get("/consultDetailsProducts/:id", ConsulDetailsProductById);
 
-export default router
+export default router;

@@ -23,11 +23,6 @@ export const login = async (req: Request, res: Response) => {
     const blockedTime = new Date(login.lasFalledLogin);
     const minuteDifference = differenceInMinutes(currentTime, blockedTime);
 
-    console.log("currentTime  ", currentTime);
-    console.log("blockedTime  ", blockedTime);
-    console.log("hoursDifference ", minuteDifference);
-    console.log("login.lasFalledLogin ", login.lasFalledLogin);
-
     if (login?.blocked) {
       if (minuteDifference >= 120) {
         await User.update(

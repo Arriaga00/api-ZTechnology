@@ -1,9 +1,15 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import Order from "./order";
 import Product from "./product";
 import db from "../db/conection";
 
-const order_Detail = db.define(
+interface OrderDetail extends Model {
+  id_order: number;
+  id_product: number;
+  quantity: number;
+}
+
+const order_Detail = db.define<OrderDetail>(
   "Order_Detail",
   {
     id_order: {
@@ -31,5 +37,4 @@ const order_Detail = db.define(
   }
 );
 
-order_Detail.belongsTo(Product, { foreignKey: "id_product", as: "product" });
 export default order_Detail;
