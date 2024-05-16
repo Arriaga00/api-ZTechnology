@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from '../db/conection'
-import User from './user';  // Importa el modelo User
+import User from './user';  
 
 const client = db.define('Client', {
     id_client : {

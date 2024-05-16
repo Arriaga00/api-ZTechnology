@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from '../db/conection'
 
+
 const product = db.define('Product', {
     id_product : {
         type : DataTypes.INTEGER,
@@ -24,5 +25,6 @@ const product = db.define('Product', {
     tableName: 'products',
     timestamps: false
 })
+
 
 export default product

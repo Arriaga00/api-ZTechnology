@@ -1,18 +1,22 @@
 import { DataTypes } from "sequelize";
+import Order from './order'; 
+import Product from "./product";
 import db from '../db/conection'
-import Order from './order'; // Importa el modelo Order
 
-const Order_Detail = db.define('Order_Detail',{
+const order_Detail = db.define('Order_Detail',{
     id_order : {
         type : DataTypes.BIGINT,
-        primaryKey : true,
         references: {
             model: Order,
             key: 'id_order'
         }
     },
     id_product : {
-        type : DataTypes.NUMBER
+        type : DataTypes.NUMBER,
+        references : {
+            model : Product,
+            key : 'id_product'
+        }
     },
     quantity : {
         type : DataTypes.NUMBER
@@ -23,4 +27,6 @@ const Order_Detail = db.define('Order_Detail',{
     timestamps: false
 })
 
-export default Order_Detail;
+
+order_Detail.belongsTo(Product, {foreignKey : 'id_product' , as : 'product'})
+export default order_Detail;

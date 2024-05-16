@@ -1,16 +1,42 @@
+import { Model } from 'sequelize';
 import { Request, Response } from "express";
 import Order from '../models/order'
+import Product from '../models/product'
+import User from '../models/user'
+import Client from '../models/client'
 import Order_Detail from '../models/order_Detail'
 
-
 export const getOrders = async ( req: Request , res : Response) => {
-
-    const orders = await Order.findAll()
+    const orders = await Order.findAll({
+        attributes : ['id_order','order_date','total_price','status'],
+        include: [{
+            model: Order_Detail,
+            as : 'details',
+            attributes: ['id_order','id_product','quantity'],
+            include: [{
+                model: Product,
+                as: 'product',
+                required: false,
+                attributes: ['id_product', 'name', 'description', 'price', 'image']
+            }]
+        },{
+            model : User,
+            as : 'user',
+            attributes : ['names']
+        },{
+            model : Client,
+            as : 'client',
+            attributes : ['name']
+        }]
+    }) 
 
     res.status(200).json({
         orders
     })
 }
+
+
+
 
 export const saveOrder = async(req: Request, res: Response) => {
     let { id_client, products, total_price, id_user, } = req.body;

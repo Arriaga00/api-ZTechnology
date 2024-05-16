@@ -1,7 +1,24 @@
-import { DataTypes } from "sequelize"
+import { DataTypes , Model} from "sequelize"
 import db from '../db/conection'
 
-const user = db.define('User', {
+interface User extends Model {
+    document : string,
+    names : string,
+    email : string,
+    password : string,
+    cellphone : string,
+    address : string,
+    age : number,
+    id_roles : bigint,
+    state : boolean,
+    photo: string,
+    confirmPassword : string,
+    blocked : boolean,
+    falledLogin : number,
+    lasFalledLogin : Date
+}
+
+const user = db.define<User>('User', {
     document : {
         type : DataTypes.STRING
     },
@@ -34,6 +51,15 @@ const user = db.define('User', {
     },
     confirmPassword : {
         type : DataTypes.STRING
+    },
+    blocked :{
+        type : DataTypes.TINYINT
+    },
+    falledLogin: {
+        type : DataTypes.NUMBER
+    },
+    lasFalledLogin : {
+        type : DataTypes.DATE
     }
 },
 {
