@@ -25,16 +25,18 @@ export const ConsulDetailsProductById = async (req: Request, res: Response) => {
     where: {
       idOrder_details: id,
     },
-    attributes: ["idProduct_details", "quantity"],
+    attributes: ["idOrder_details", "idProduct_details", "quantity"],
     include: [
       {
         model: Product,
         as: "product",
+        foreignKey: "idProduct_details", // Añadido esto
         attributes: ["id_product", "name", "price", "image"],
       },
       {
         model: Order,
         as: "order",
+        foreignKey: "idOrder_details", // Añadido esto
         attributes: ["total_price", "status", "order_date"],
       },
     ],
