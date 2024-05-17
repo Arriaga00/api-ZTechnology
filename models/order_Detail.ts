@@ -8,6 +8,7 @@ const order_Detail = db.define(
   {
     idOrder_details: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
       references: {
         model: Order,
         key: "id_order",
@@ -25,7 +26,6 @@ const order_Detail = db.define(
     },
     id: {
       type: DataTypes.BIGINT,
-      primaryKey: true,
     },
   },
   {
