@@ -1,0 +1,8 @@
+###
+GET http://localhost:5000/api/order/ordersAll
+
+### 
+POST http://localhost:5000/api/order/savOrder
+
+###
+PUT http://localhost:5000/api/order/updateOrder

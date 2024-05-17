@@ -1,0 +1,44 @@
+### consultar todos los usuarios
+GET http://localhost:5000/api/usuarios/consultar-usuarios
+### por id --> por parametro
+GET http://localhost:5000/api/usuarios/consultar-usuario/4
+
+### por nombre
+GET http://localhost:5000/api/usuarios/consultar-usuario-nombre/andres%20arriaga
+
+###  guardar usuarios
+POST http://localhost:5000/api/usuarios/guardar-usuario
+Content-Type: application/json
+
+{
+    "document" : "12882662",
+    "names" : "Yeferson Carrillos",
+    "email" : "yefersonC@gmail.com",
+    "password" : "yCarrillos",
+    "cellphone" : "3009876754",
+    "address" : "cll 37 - 122 sur",
+    "age" : 30,
+    "photo" : ""
+}
+
+### actualizar el usuario
+PUT http://localhost:5000/api/usuarios/actualizar-usuario
+Content-Type: application/json
+
+# {
+# "id" : 2,
+# "document": "10089637",
+# "names": "carlos urrego moreno",
+# "email": "carlos@gmail.com",
+# "password": "carr10877",
+# "cellphone": "3007843588",
+# "address": "cll 378 num 60 -63",
+# "age": 30,
+# "photo" : ""
+# }
+
+
+
+
+###
+DELETE  http://localhost:5000/api/usuarios/eliminar-usuario/2
