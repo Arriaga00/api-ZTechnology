@@ -31,7 +31,11 @@ export const login = async (req: Request, res: Response) => {
         );
         return false;
       } else {
+<<<<<<< HEAD
         res.status(401).json({
+=======
+        res.status(404).json({
+>>>>>>> 5fcebd11ca72bbd77d69e21b53dad9e37acafeb6
           msg: `El usuario esta bloqueado por favor comunicarse con el servicio al cliente `,
         });
       }
@@ -48,7 +52,11 @@ export const login = async (req: Request, res: Response) => {
           { blocked: true, lasFalledLogin: currentDate },
           { where: { email } }
         );
+<<<<<<< HEAD
         res.status(401).json({
+=======
+        res.status(404).json({
+>>>>>>> 5fcebd11ca72bbd77d69e21b53dad9e37acafeb6
           msg: `El usuario ha sido bloqueado por demasiados intentos fallidos.`,
         });
         return;
@@ -65,7 +73,11 @@ export const login = async (req: Request, res: Response) => {
     }
 
     if (!login?.state) {
+<<<<<<< HEAD
       res.status(401).json({
+=======
+      res.status(404).json({
+>>>>>>> 5fcebd11ca72bbd77d69e21b53dad9e37acafeb6
         msg: `El usuario esta inactivo por favor comunicarse con el servicio al cliente `,
       });
       return;
