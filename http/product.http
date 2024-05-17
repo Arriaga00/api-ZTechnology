@@ -1,8 +1,8 @@
 ### consultar producto
-GET http://localhost:5000/api/product/consultar-productos
+GET ztechnology.up.railway.app/api/product/consultar-productos
 
 ###guardar producto
-POST http://localhost:5000/api/product/guardar-producto
+POST ztechnology.up.railway.app/api/product/guardar-producto
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### actualizar producto
-PUT http://localhost:5000/api/product/actualizar-producto
+PUT ztechnology.up.railway.app/api/product/actualizar-producto
 Content-Type: application/json
 
 {
@@ -23,4 +23,4 @@ Content-Type: application/json
 }
 
 ### Eliminar product0
-DELETE http://localhost:5000/api/product/eleminar-producto/11
+DELETE ztechnology.up.railway.app/api/product/eleminar-producto/11

@@ -1,13 +1,13 @@
 ### consultar todos los usuarios
-GET http://localhost:5000/api/usuarios/consultar-usuarios
+GET ztechnology.up.railway.app/api/usuarios/consultar-usuarios
 ### por id --> por parametro
-GET http://localhost:5000/api/usuarios/consultar-usuario/4
+GET ztechnology.up.railway.app/api/usuarios/consultar-usuario/4
 
 ### por nombre
-GET http://localhost:5000/api/usuarios/consultar-usuario-nombre/andres%20arriaga
+GET ztechnology.up.railway.app/api/usuarios/consultar-usuario-nombre/andres%20arriaga
 
 ###  guardar usuarios
-POST http://localhost:5000/api/usuarios/guardar-usuario
+POST ztechnology.up.railway.app/api/usuarios/guardar-usuario
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### actualizar el usuario
-PUT http://localhost:5000/api/usuarios/actualizar-usuario
+PUT ztechnology.up.railway.app/api/usuarios/actualizar-usuario
 Content-Type: application/json
 
 # {
@@ -41,4 +41,4 @@ Content-Type: application/json
 
 
 ###
-DELETE  http://localhost:5000/api/usuarios/eliminar-usuario/2
+DELETE  ztechnology.up.railway.app/api/usuarios/eliminar-usuario/2

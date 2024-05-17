@@ -10,11 +10,11 @@ Client.hasMany(Order, { foreignKey: "id_client", as: "orders" });
 Order.belongsTo(User, { foreignKey: "id_user", as: "user" });
 User.hasMany(Order, { foreignKey: "id_user", as: "orders" });
 
-Order.hasMany(Order_Detail, { foreignKey: "idOrder", as: "details" });
+Order.hasMany(Order_Detail, { foreignKey: "idOrder_details", as: "details" });
 Order_Detail.belongsTo(Order, { foreignKey: "id_order", as: "order" });
 
 Product.hasMany(Order_Detail, {
-  foreignKey: "idProduct",
+  foreignKey: "idProduct_details",
   as: "productDetails",
 });
 Order_Detail.belongsTo(Product, { foreignKey: "id_product", as: "product" });

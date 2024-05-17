@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes } from "sequelize";
 import Order from "./order";
 import Product from "./product";
 import db from "../db/conection";
@@ -6,23 +6,26 @@ import db from "../db/conection";
 const order_Detail = db.define(
   "Order_Detail",
   {
-    idOrder: {
-      type: DataTypes.BIGINT,
-      primaryKey: true,
+    idOrder_details: {
+      type: DataTypes.INTEGER,
       references: {
         model: Order,
         key: "id_order",
       },
     },
-    idProduct: {
-      type: DataTypes.NUMBER,
+    idProduct_details: {
+      type: DataTypes.INTEGER,
       references: {
         model: Product,
         key: "id_product",
       },
     },
     quantity: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
+    },
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true,
     },
   },
   {
