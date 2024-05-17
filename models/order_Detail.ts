@@ -3,16 +3,10 @@ import Order from "./order";
 import Product from "./product";
 import db from "../db/conection";
 
-interface OrderDetail extends Model {
-  id_order: number;
-  id_product: number;
-  quantity: number;
-}
-
-const order_Detail = db.define<OrderDetail>(
+const order_Detail = db.define(
   "Order_Detail",
   {
-    id_order: {
+    idOrder: {
       type: DataTypes.BIGINT,
       primaryKey: true,
       references: {
@@ -20,7 +14,7 @@ const order_Detail = db.define<OrderDetail>(
         key: "id_order",
       },
     },
-    id_product: {
+    idProduct: {
       type: DataTypes.NUMBER,
       references: {
         model: Product,

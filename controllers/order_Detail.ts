@@ -4,7 +4,7 @@ import { Order, Product } from "../models/relaciones";
 
 export const consultDetailsProducts = async (req: Request, res: Response) => {
   const detailsProducts = await Order_Detail.findAll({
-    attributes: ["id_order", "id_product", "quantity"],
+    attributes: ["idOrder", "idProduct", "quantity"],
   });
 
   res.status(200).json({
@@ -16,9 +16,9 @@ export const ConsulDetailsProductById = async (req: Request, res: Response) => {
   const { id } = req.params;
   const detailOrder = await Order_Detail.findAll({
     where: {
-      id_order: id,
+      idOrder_details: id,
     },
-    attributes: ["id_product", "quantity"],
+    attributes: ["idProduct_details", "quantity"],
     include: [
       {
         model: Product,
