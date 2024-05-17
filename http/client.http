@@ -2,7 +2,7 @@
 GET http://localhost:5000/api/client/clientAll
 
 ###
-POST https://ztechnology.up.railway.app/api/client/createClient
+POST http://localhost:5000/api/client/createClient
 Content-Type: application/json
 
 {

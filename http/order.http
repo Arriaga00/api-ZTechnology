@@ -1,8 +1,8 @@
 ###
-GET ztechnology.up.railway.app/api/order/ordersAll
+GET http://localhost:5000/api/order/ordersAll
 
 ### 
-POST ztechnology.up.railway.app/api/order/savOrder
+POST http://localhost:5000/api/order/savOrder
 
 ###
-PUT ztechnology.up.railway.app/api/order/updateOrder
+PUT http://localhost:5000/api/order/updateOrder

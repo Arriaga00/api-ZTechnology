@@ -46,8 +46,8 @@ export const saveOrder = async (req: Request, res: Response) => {
   // Crea cada producto de la orden
   for (let product of products) {
     await Order_Detail.create({
-      id_order: id,
-      id_product: product.id_product,
+      idOrder_details: id,
+      idProduct_details: product.id_product,
       quantity: product.quantity,
     });
   }

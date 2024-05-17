@@ -1,5 +1,5 @@
 ###
-GET ztechnology.up.railway.app/api/order_detail/consultDetailsProducts
+GET http://localhost:5000/api/order_detail/consultDetailsProducts
 
 ###
 GET http://localhost:5000/api/order_detail/consultDetailsProducts/3

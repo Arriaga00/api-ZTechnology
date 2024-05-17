@@ -1,5 +1,5 @@
 ### consult roles
-GET ztechnology.up.railway.app/api/role/cosnultar-roles
+GET http://localhost:5000/api/role/cosnultar-roles
 
 ### consultar por id
-GET ztechnology.up.railway.app/api/role/cosnultar-role/1
+GET http://localhost:5000/api/role/cosnultar-role/1
